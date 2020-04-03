@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,10 +27,14 @@ import ga.cf.ga_cursos_carrera.R;
 import ga.cf.ga_cursos_carrera.ui.login.LoginViewModel;
 import ga.cf.ga_cursos_carrera.ui.login.LoginViewModelFactory;
 
-public class LoginActivity extends AppCompatActivity {
+
+
+public class LoginActivity extends AppCompatActivity{
 
     private LoginViewModel loginViewModel;
-
+    /* Request permission Id*/
+    private static final int REQUEST_READ_CONTACTS = 0;
+    private static final String[] DUMMY_CREDENTIALS = new String[]{"@admin:admin", "@:admin"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,13 +123,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
-
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
