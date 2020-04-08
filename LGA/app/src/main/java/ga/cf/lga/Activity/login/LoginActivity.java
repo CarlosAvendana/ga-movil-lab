@@ -1,18 +1,8 @@
 package ga.cf.lga.Activity.login;
 
 import android.app.Activity;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavAction;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -24,10 +14,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ga.cf.lga.Activity.NavDrawActivity;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import ga.cf.lga.Activity.NavDraw.NavDrawActivity;
 import ga.cf.lga.R;
-import ga.cf.lga.Activity.login.LoginViewModel;
-import ga.cf.lga.Activity.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 

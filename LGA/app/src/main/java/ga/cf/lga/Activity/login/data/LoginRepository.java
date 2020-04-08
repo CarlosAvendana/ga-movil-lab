@@ -1,6 +1,6 @@
-package ga.cf.lga.Activity.data;
+package ga.cf.lga.Activity.login.data;
 
-import ga.cf.lga.Activity.data.model.LoggedInUser;
+import ga.cf.lga.Activity.login.data.model.LoggedInUser;
 
 /**
  * Class that requests authentication and user information from the remote data source and

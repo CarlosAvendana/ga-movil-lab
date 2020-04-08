@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ga.cf.lga" >
+    package="ga.cf.lga">
 
     <application
         android:allowBackup="true"
@@ -8,15 +8,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.NavDrawActivity"
+            android:name=".Activity.Curso.AmdCurso"
+            android:label="@string/title_activity_amd_curso"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activity.Carrera.AmdCarrera"
+            android:label="@string/title_activity_amd_carrera"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.navDraw.ui.NavDrawActivity"
             android:label="@string/title_activity_nav_draw"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.login.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

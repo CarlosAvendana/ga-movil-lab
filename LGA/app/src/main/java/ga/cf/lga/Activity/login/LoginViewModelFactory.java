@@ -1,11 +1,11 @@
 package ga.cf.lga.Activity.login;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.annotation.NonNull;
 
-import ga.cf.lga.Activity.data.LoginDataSource;
-import ga.cf.lga.Activity.data.LoginRepository;
+import ga.cf.lga.Activity.login.data.LoginDataSource;
+import ga.cf.lga.Activity.login.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

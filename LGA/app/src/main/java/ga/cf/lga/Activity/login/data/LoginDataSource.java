@@ -1,10 +1,9 @@
-package ga.cf.lga.Activity.data;
-
-import ga.cf.lga.LogicaNeg.Usuario;
-import ga.cf.lga.Activity.data.model.LoggedInUser;
+package ga.cf.lga.Activity.login.data;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import ga.cf.lga.Activity.login.data.model.LoggedInUser;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.

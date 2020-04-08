@@ -1,14 +1,14 @@
 package ga.cf.lga.Activity.login;
 
+import android.util.Patterns;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Patterns;
-
-import ga.cf.lga.Activity.data.LoginRepository;
-import ga.cf.lga.Activity.data.Result;
-import ga.cf.lga.Activity.data.model.LoggedInUser;
+import ga.cf.lga.Activity.login.data.LoginRepository;
+import ga.cf.lga.Activity.login.data.Result;
+import ga.cf.lga.Activity.login.data.model.LoggedInUser;
 import ga.cf.lga.R;
 
 public class LoginViewModel extends ViewModel {

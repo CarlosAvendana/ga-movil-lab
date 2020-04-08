@@ -1,4 +1,4 @@
-package ga.cf.lga.Activity.data.model;
+package ga.cf.lga.Activity.login.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

@@ -1,4 +1,4 @@
-package ga.cf.lga.Activity.data;
+package ga.cf.lga.Activity.login.data;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.
