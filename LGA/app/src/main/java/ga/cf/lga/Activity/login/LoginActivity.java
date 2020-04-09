@@ -1,6 +1,7 @@
 package ga.cf.lga.Activity.login;
 
 
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -31,9 +32,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -45,7 +46,6 @@ import ga.cf.lga.LogicaNeg.Usuario;
 import ga.cf.lga.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
-
 /**
  * A login screen that offers login via email/password.
  */

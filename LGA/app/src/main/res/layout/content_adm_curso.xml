@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_adm_curso"
-    tools:context="com.example.lenovo.lab.Activity.AdmCursoActivity">
+    tools:context="ga.cf.lga.Activity.Curso.AdmCursoActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_cursosFld"
