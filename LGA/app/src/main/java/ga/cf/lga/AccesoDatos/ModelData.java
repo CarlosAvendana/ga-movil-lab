@@ -3,7 +3,6 @@ package ga.cf.lga.AccesoDatos;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import ga.cf.lga.LogicaNeg.Carrera;
 import ga.cf.lga.LogicaNeg.Curso;
 import ga.cf.lga.LogicaNeg.Usuario;
@@ -164,8 +163,12 @@ public class ModelData {
     }
     public List<Usuario> getUsuariosList() {
         List<Usuario> users = new ArrayList<>();
-        users.add(new Usuario("@admin", "admin"));
-        users.add(new Usuario("@carlos", "admin"));
+        users.add(new Usuario("@admin", "admin", "administrador", "111"));
+        users.add(new Usuario("@admin2", "admin", "administrador", "222"));
+        users.add(new Usuario("@matric", "matric", "matriculador", "333"));
+        users.add(new Usuario("@matric1", "matric", "matriculador", "444"));
+        users.add(new Usuario("@matric2", "matric", "matriculador", "555"));
+        users.add(new Usuario("@matric3", "matric", "matriculador", "555"));
         return users;
     }
 

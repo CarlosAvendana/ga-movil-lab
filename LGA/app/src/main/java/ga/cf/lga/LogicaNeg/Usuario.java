@@ -2,36 +2,66 @@ package ga.cf.lga.LogicaNeg;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
-    private String nombreUsuario;
-    private String pass;
 
+
+public class Usuario implements Serializable {
+    private String correo;
+    private String contraseña;
+    private String cedula;
+    private String privilegio;
 
     public Usuario() {
-        this.pass = "none";
-        this.nombreUsuario = "none";
+        this.correo = "none";
+        this.contraseña = "none";
+        this.privilegio = "none";
     }
 
-    public Usuario(String nombre, String pass) {
-        this.nombreUsuario=nombre;
-        this.pass = pass;
+    public Usuario(String correo, String contraseña, String privilegio, String cedula) {
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.cedula = cedula;
+        this.privilegio = privilegio;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public String getCorreo() {
+        return correo;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getPass() {
-        return pass;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
+    public String getPrivilegio() {
+        return privilegio;
+    }
 
+    public void setPrivilegio(String privilegio) {
+        this.privilegio = privilegio;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "correo='" + correo + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", privilegio='" + privilegio + '\'' +
+                '}';
+    }
 }

@@ -25,6 +25,29 @@ public class CarrerasAdapter extends RecyclerView.Adapter<CarrerasAdapter.MyView
     private CarreraAdapterListener listener;
     private Carrera deletedItem;
 
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title1, title2, description;
+        //two layers
+        public RelativeLayout viewForeground, viewBackgroundDelete, viewBackgroundEdit;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title1 = view.findViewById(R.id.titleFirstLbl);
+            title2 = view.findViewById(R.id.titleSecLbl);
+            description = view.findViewById(R.id.descriptionLbl);
+            viewBackgroundDelete = view.findViewById(R.id.view_background_delete);
+            viewBackgroundEdit = view.findViewById(R.id.view_background_edit);
+            viewForeground = view.findViewById(R.id.view_foreground);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // send selected contact in callback
+                    listener.onContactSelected(carreraListFiltered.get(getAdapterPosition()));
+                }
+            });
+        }
+    }
+
     public CarrerasAdapter(List<Carrera> carreraList, CarreraAdapterListener listener) {
         this.carreraList = carreraList;
         this.listener = listener;
@@ -147,28 +170,5 @@ public class CarrerasAdapter extends RecyclerView.Adapter<CarrerasAdapter.MyView
 
     public interface CarreraAdapterListener {
         void onContactSelected(Carrera carrera);
-    }
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title1, title2, description;
-        //two layers
-        public RelativeLayout viewForeground, viewBackgroundDelete, viewBackgroundEdit;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title1 = view.findViewById(R.id.titleFirstLbl);
-            title2 = view.findViewById(R.id.titleSecLbl);
-            description = view.findViewById(R.id.descriptionLbl);
-            viewBackgroundDelete = view.findViewById(R.id.view_background_delete);
-            viewBackgroundEdit = view.findViewById(R.id.view_background_edit);
-            viewForeground = view.findViewById(R.id.view_foreground);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // send selected contact in callback
-                    listener.onContactSelected(carreraListFiltered.get(getAdapterPosition()));
-                }
-            });
-        }
     }
 }

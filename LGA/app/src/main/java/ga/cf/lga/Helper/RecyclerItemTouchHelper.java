@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import ga.cf.lga.Adapter.CarrerasAdapter;
 import ga.cf.lga.Adapter.CursoAdapter;
 
+
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
     private RecyclerItemTouchHelperListener listener;
@@ -55,11 +56,11 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (viewHolder != null) {
             //check adapter
-            if (this.listener.getClass().getSimpleName().equals("AmdCurso")) {
+            if (this.listener.getClass().getSimpleName().equals("AdmCursoActivity")) {
                 backgroundViewEdit = ((CursoAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((CursoAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((CursoAdapter.MyViewHolder) viewHolder).viewForeground;
-            } else if (this.listener.getClass().getSimpleName().equals("AmdCarrera")) {
+            } else if (this.listener.getClass().getSimpleName().equals("AdmCarreraActivity")) {
                 backgroundViewEdit = ((CarrerasAdapter.MyViewHolder) viewHolder).viewBackgroundEdit;
                 backgroundViewDelete = ((CarrerasAdapter.MyViewHolder) viewHolder).viewBackgroundDelete;
                 foregroundView = ((CarrerasAdapter.MyViewHolder) viewHolder).viewForeground;
