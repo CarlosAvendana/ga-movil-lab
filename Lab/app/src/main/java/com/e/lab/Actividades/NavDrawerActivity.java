@@ -91,12 +91,12 @@ public class NavDrawerActivity extends AppCompatActivity
 
         if (id == R.id.nav_curso) {
             Toast.makeText(getApplicationContext(), "Cursos", Toast.LENGTH_SHORT).show();
-            //abrirAdmCurso();
+            abrirAdmCurso();
         } else if (id == R.id.nav_carrera) {
             Toast.makeText(getApplicationContext(), "Carreras", Toast.LENGTH_SHORT).show();
             abrirAdmCarrera();
         } else if (id == R.id.nav_logout) {
-            Toast.makeText(getApplicationContext(), "Log Out", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Log-Out", Toast.LENGTH_SHORT).show();
             abrirLogin();
         }
 
@@ -117,11 +117,9 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(a);
     }
 
-
-/*
     public void abrirAdmCurso() {
         Intent intent = new Intent(this, AdmCursoActivity.class);
         startActivity(intent);
     }
-    */
+
 }

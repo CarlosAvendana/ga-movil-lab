@@ -6,13 +6,21 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Actividades.AddUpdCursoActivity"
+            android:label="@string/title_activity_add_upd_curso"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Actividades.AdmCursoActivity"
+            android:label="@string/title_activity_adm_curso"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Actividades.AddUpdCarreraActivity"
             android:label="@string/title_activity_add_upd_carrera"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Actividades.AdmCarreraActivity"
             android:label="@string/title_activity_adm_carrera"
