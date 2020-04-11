@@ -19,7 +19,6 @@ public class ModelData {
         cursoList = new ArrayList<>();
         prepareCarreraData();
         prepareCursoData();
-
     }
 
     public void prepareCarreraData() {

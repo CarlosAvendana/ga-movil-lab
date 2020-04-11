@@ -16,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.e.lab.R;
+import com.e.lab.ui.login.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavDrawerActivity extends AppCompatActivity
@@ -66,10 +67,7 @@ public class NavDrawerActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -99,7 +97,7 @@ public class NavDrawerActivity extends AppCompatActivity
             abrirAdmCarrera();
         } else if (id == R.id.nav_logout) {
             Toast.makeText(getApplicationContext(), "Log Out", Toast.LENGTH_SHORT).show();
-            //abrirLogin();
+            abrirLogin();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,7 +110,7 @@ public class NavDrawerActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-/*
+
     public void abrirLogin() {
         finish();
         Intent a = new Intent(this, LoginActivity.class);
@@ -120,7 +118,7 @@ public class NavDrawerActivity extends AppCompatActivity
     }
 
 
-
+/*
     public void abrirAdmCurso() {
         Intent intent = new Intent(this, AdmCursoActivity.class);
         startActivity(intent);

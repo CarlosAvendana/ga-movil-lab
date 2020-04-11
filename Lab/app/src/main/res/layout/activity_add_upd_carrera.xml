@@ -68,7 +68,7 @@
             android:layout_margin="16dp"
             android:src="@drawable/ic_check"
             android:tint="@android:color/background_light"
-            app:backgroundTint="@color/bg_row_background"/>
+            app:backgroundTint="@color/colorAccent"/>
 
     </LinearLayout>
 
