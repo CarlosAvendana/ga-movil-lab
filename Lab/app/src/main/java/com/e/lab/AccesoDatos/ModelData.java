@@ -52,34 +52,6 @@ public class ModelData {
         carrera.addCurso(new Curso("HB1", "Historia Basica I", 3, 4));
         carreraList.add(carrera);
 
-        carrera = new Carrera("Star Trek", "Science Fiction");
-        carrera.addCurso(new Curso("M1", "Matrix 1", 3, 4));
-        carrera.addCurso(new Curso("BDR", "Blade Runner 2049", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("The LEGO Movie", "Animation");
-        carrera.addCurso(new Curso("ZOO", "Zootopia", 3, 4));
-        carrera.addCurso(new Curso("VIN", "Vecinos Invasores", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("Back to the Future", "Classics");
-        carrera.addCurso(new Curso("TIT", "Titanic", 3, 4));
-        carrera.addCurso(new Curso("DDA", "Donnie Darko", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("3 Idiots", "Commedy");
-        carrera.addCurso(new Curso("WDG", "War Dogs", 3, 4));
-        carrera.addCurso(new Curso("ANT", "Ant Man", 3, 4));
-        carreraList.add(carrera);
-
-        carrera = new Carrera("Guardians of the Galaxy", "Science Fiction & Fantasy");
-        carrera.addCurso(new Curso("JL", "Justice League", 3, 4));
-        carrera.addCurso(new Curso("AVG", "Avengers", 3, 4));
-        carreraList.add(carrera);
-
-
-        carrera = new Carrera("Batman", "Action");
-        carreraList.add(carrera);
     }
 
     public void prepareCursoData() {
@@ -125,31 +97,7 @@ public class ModelData {
         cursoList.add(curso);
         curso = new Curso("HB1", "Historia Basica I", 3, 4);
         cursoList.add(curso);
-        // de science fiction
-        curso = new Curso("M1", "Matrix 1", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("BDR", "Blade Runner 2049", 3, 4);
-        cursoList.add(curso);
-        // de animation
-        curso = new Curso("ZOO", "Zootopia", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("VIN", "Vecinos Invasores", 3, 4);
-        cursoList.add(curso);
-        // de classics
-        curso = new Curso("TIT", "Titanic", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("DDA", "Donnie Darko", 3, 4);
-        cursoList.add(curso);
-        // de commedy
-        curso = new Curso("WDG", "War Dogs", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("ANT", "Ant Man", 3, 4);
-        cursoList.add(curso);
-        // de Science Fiction & Fantasy
-        curso = new Curso("JL", "Justice League", 3, 4);
-        cursoList.add(curso);
-        curso = new Curso("AVG", "Avengers", 3, 4);
-        cursoList.add(curso);
+
     }
 
     public List<Carrera> getCarreraList() {

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.e.lab.AccesoDatos.ModelData;
 import com.e.lab.Adaptador.CarrerasAdapter;
 import com.e.lab.Adaptador.CursoAdapter;
+import com.e.lab.Helper.RecyclerItemTouchHelper;
 import com.e.lab.LogicaNeg.Curso;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +30,7 @@ import com.e.lab.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.CursoAdapterListener {
+public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.CursoAdapterListener, RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private RecyclerView mRecyclerView;
     private CursoAdapter mAdapter;
@@ -64,6 +66,8 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
             }
         });
 
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
 
         // Receive the Carrera sent by AddUpdCarreraActivity
         checkIntentInformation();
@@ -79,7 +83,7 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
             int flags = view.getSystemUiVisibility();
             flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             view.setSystemUiVisibility(flags);
-            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().setStatusBarColor(Color.parseColor("#0288D1"));
         }
     }
     @Override
@@ -128,6 +132,35 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
     }
 
 
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (direction == ItemTouchHelper.START) {
+            if (viewHolder instanceof CursoAdapter.MyViewHolder) {
+                // get the removed item name to display it in snack bar
+                String name = cursoList.get(viewHolder.getAdapterPosition()).getNombre();
 
+                // save the index deleted
+                final int deletedIndex = viewHolder.getAdapterPosition();
+                // remove the item from recyclerView
+                mAdapter.removeItem(viewHolder.getAdapterPosition());
+
+                Toast.makeText(getApplicationContext(), name+ " removido!", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            //If is editing a row object
+            Curso aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+            //send data to Edit Activity
+            Intent intent = new Intent(this, AddUpdCursoActivity.class);
+            intent.putExtra("editable", true);
+            intent.putExtra("curso", aux);
+            mAdapter.notifyDataSetChanged(); //restart left swipe view
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onItemMove(int source, int target) {
+        mAdapter.onItemMove(source, target);
+    }
 
 }

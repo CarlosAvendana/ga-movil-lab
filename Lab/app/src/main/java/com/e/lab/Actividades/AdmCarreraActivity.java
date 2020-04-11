@@ -4,33 +4,40 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.Toolbar;
+
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.e.lab.AccesoDatos.ModelData;
 import com.e.lab.Adaptador.CarrerasAdapter;
+import com.e.lab.Helper.RecyclerItemTouchHelper;
 import com.e.lab.LogicaNeg.Carrera;
 import com.e.lab.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAdapter.CarreraAdapterListener {
+public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAdapter.CarreraAdapterListener, RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private RecyclerView mRecyclerView;
     private CarrerasAdapter mAdapter;
     private List<Carrera> carreraList;
     private ModelData model;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,9 @@ public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAda
             }
         });
 
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
+
 
         // Receive the Carrera sent by AddUpdCarreraActivity
         checkIntentInformation();
@@ -76,13 +86,13 @@ public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAda
             int flags = view.getSystemUiVisibility();
             flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             view.setSystemUiVisibility(flags);
-            getWindow().setStatusBarColor(Color.WHITE);
+            getWindow().setStatusBarColor(Color.parseColor("#0288D1"));
         }
     }
 
     @Override
     public void onContactSelected(Carrera carrera) { //TODO get the select item of recycleView
-        Toast.makeText(getApplicationContext(), "Selected: " + carrera.getCodigo() + ", " + carrera.getNombre(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Seleccionado: " + carrera.getCodigo() + ", " + carrera.getNombre(), Toast.LENGTH_LONG).show();
     }
 
     public void goToAddUpdCarrera() {
@@ -119,9 +129,40 @@ public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAda
             } else {
                 //found a new Carrera Object
                 carreraList.add(aux);
-                Toast.makeText(getApplicationContext(), aux.getNombre() + " agregado correctamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), aux.getNombre() + " Agregado correctamente", Toast.LENGTH_LONG).show();
             }
         }
     }
 
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (direction == ItemTouchHelper.START) {
+            if (viewHolder instanceof CarrerasAdapter.MyViewHolder) {
+                // get the removed item name to display it in snack bar
+                String name = carreraList.get(viewHolder.getAdapterPosition()).getNombre();
+
+                // save the index deleted
+                final int deletedIndex = viewHolder.getAdapterPosition();
+                // remove the item from recyclerView
+                mAdapter.removeItem(viewHolder.getAdapterPosition());
+
+
+                Toast.makeText(getApplicationContext(), name+ " removido!", Toast.LENGTH_LONG).show();
+
+            }
+        } else {
+            //If is editing a row object
+            Carrera aux = mAdapter.getSwipedItem(viewHolder.getAdapterPosition());
+            //send data to Edit Activity
+            Intent intent = new Intent(this, AddUpdCarreraActivity.class);
+            intent.putExtra("editable", true);
+            intent.putExtra("carrera", aux);
+            mAdapter.notifyDataSetChanged(); //restart left swipe view
+            startActivity(intent);
+        }
+    }
+    @Override
+    public void onItemMove(int source, int target) {
+        mAdapter.onItemMove(source, target);
+    }
 }
