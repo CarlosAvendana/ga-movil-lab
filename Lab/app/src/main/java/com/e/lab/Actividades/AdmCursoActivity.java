@@ -1,10 +1,14 @@
 package com.e.lab.Actividades;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 import com.e.lab.AccesoDatos.ModelData;
 import com.e.lab.Adaptador.CarrerasAdapter;
 import com.e.lab.Adaptador.CursoAdapter;
@@ -36,6 +40,7 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
     private CursoAdapter mAdapter;
     private List<Curso> cursoList;
     private ModelData model;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +166,66 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
     @Override
     public void onItemMove(int source, int target) {
         mAdapter.onItemMove(source, target);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds cursoList to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+
+        // Associate searchable configuration with the SearchView   !IMPORTANT
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search)
+                .getActionView();
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change, every type on input
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                mAdapter.getFilter().filter(query);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_search) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!searchView.isIconified()) {
+            searchView.setIconified(true);
+            return;
+        }
+        Intent a = new Intent(this, NavDrawerActivity.class);
+        a.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(a);
+        super.onBackPressed();
     }
 
 }
