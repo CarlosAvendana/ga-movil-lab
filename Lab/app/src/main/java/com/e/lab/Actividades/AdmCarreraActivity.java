@@ -13,7 +13,6 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -50,7 +49,7 @@ public class AdmCarreraActivity extends AppCompatActivity implements CarrerasAda
 
         mRecyclerView = findViewById(R.id.recycler_carrerasFld);
         carreraList = new ArrayList<>();
-        model = new ModelData();
+        model = ModelData.getInstance();
         carreraList = model.getCarreraList();
         mAdapter = new CarrerasAdapter(carreraList, this);
 

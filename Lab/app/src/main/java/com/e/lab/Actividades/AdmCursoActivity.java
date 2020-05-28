@@ -51,7 +51,7 @@ public class AdmCursoActivity extends AppCompatActivity implements CursoAdapter.
 
         mRecyclerView = findViewById(R.id.recycler_cursosFld);
         cursoList = new ArrayList<>();
-        model = new ModelData();
+        model = ModelData.getInstance();
         cursoList = model.getCursoList();
         mAdapter = new CursoAdapter(cursoList, this);
 

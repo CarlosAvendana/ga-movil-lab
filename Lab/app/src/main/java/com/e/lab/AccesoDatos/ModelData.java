@@ -4,12 +4,14 @@ import com.e.lab.LogicaNeg.Carrera;
 import com.e.lab.LogicaNeg.Curso;
 import com.e.lab.LogicaNeg.Usuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ModelData {
+public class ModelData implements Serializable {
 
+    private static ModelData singleton_instance = null;
 
     private List<Carrera> carreraList;
     private List<Curso> cursoList;
@@ -20,6 +22,13 @@ public class ModelData {
         prepareCarreraData();
         prepareCursoData();
     }
+
+    public static ModelData getInstance() {
+        if (singleton_instance == null)
+            singleton_instance = new ModelData();
+        return singleton_instance;
+    }
+
 
     public void prepareCarreraData() {
         Carrera carrera = new Carrera("EIF", "Ingenieria en sistemas");
